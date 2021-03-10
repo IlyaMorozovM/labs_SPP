@@ -12,13 +12,13 @@ app
     .use(express.json({ limit: '50mb' }))
     .use(express.urlencoded({ limit: '50mb' }))
 
-    .put('/', (req, res) => {
-        data.push(req.body);
+    .delete('/', (req, res) => {
+        data.splice(req.body.item, 1);
         res.status(200).end();
     })
 
-    .delete('/', (req, res) => {
-        data.splice(req.body.item, 1);
+    .put('/', (req, res) => {
+        data.push(req.body);
         res.status(200).end();
     })
 
