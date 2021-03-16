@@ -60,27 +60,26 @@ if (goalItems)
         }
     }
 
-
-fileButton.onclick = e => {
-    text.focus();
-    file.click();
-}
-
-file.addEventListener('change', function () {
-    let name = this.files[0].name;
-    let content;
-
-    const fr = new FileReader();
-    fr.onload = function () {
-        content = this.result;
-        name = name.substring(0, name.length - 4);
-        filesData.push({ name, content });
-        fileButton.title = filesData.map(e => e.name).join('\n');
-    };
-
-    if (name.match(/\.txt$/)) {
-        fr.readAsText(this.files[0]);
+    fileButton.onclick = e => {
+        text.focus();
+        file.click();
     }
+
+    file.addEventListener('change', function () {
+        let name = this.files[0].name;
+        let content;
+
+        const fr = new FileReader();
+        fr.onload = function () {
+            content = this.result;
+            name = name.substring(0, name.length - 4);
+            filesData.push({ name, content });
+            fileButton.title = filesData.map(e => e.name).join('\n');
+        };
+
+        if (name.match(/\.txt$/)) {
+            fr.readAsText(this.files[0]);
+        }
 })
 
 sendButton.onclick = e => {
